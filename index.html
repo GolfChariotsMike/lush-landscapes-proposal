@@ -614,7 +614,8 @@ footer strong { color: rgba(255,255,255,0.55); }
         <div class="phase-recurring">then $220/mo all-in</div>
         <ul class="phase-features">
           <li>Upload plans (PDF) → AI draft quote</li>
-          <li>Photo upload + A4 scale reference</li>
+          <li>Photo + satellite + A4 scale reference</li>
+          <li>Satellite pulled automatically from address</li>
           <li>AI accuracy score per quote</li>
           <li>Auto-recommends site visit if needed</li>
           <li>2D site plan generated + approved</li>
@@ -657,7 +658,7 @@ footer strong { color: rgba(255,255,255,0.55); }
   <div class="quoting-content">
     <div class="section-label">The flagship feature</div>
     <h2>Photo to<br>fixed-price quote.<br>No site visit.</h2>
-    <p class="lead" style="margin-bottom: 0;">A homeowner takes a few photos, places an A4 sheet on the ground, and receives a real fixed-price quote in their inbox — without anyone leaving the office.</p>
+    <p class="lead" style="margin-bottom: 0;">A homeowner takes a few photos, places an A4 sheet on the ground, and types their address. The system pulls a satellite image automatically — three data sources combined into one accurate, fixed-price quote. Without anyone leaving the office.</p>
 
     <div class="q-flow">
       <div class="q-step">
@@ -670,26 +671,33 @@ footer strong { color: rgba(255,255,255,0.55); }
       <div class="q-step">
         <div class="q-num">2</div>
         <div>
-          <h5>A4 paper establishes scale</h5>
-          <p>AI detects the 210×297mm reference, calculates real-world dimensions from every angle.</p>
+          <h5>Satellite image pulled automatically</h5>
+          <p>Customer enters their address. System fetches a high-resolution satellite view of the property — no extra effort required. Shows full boundaries, house footprint, fences, pool, driveway.</p>
         </div>
       </div>
       <div class="q-step">
         <div class="q-num">3</div>
+        <div>
+          <h5>A4 paper calibrates the scale</h5>
+          <p>AI detects the 210×297mm reference in the photo and cross-validates measurements against the satellite image. If they disagree, the system flags it and asks for a better photo.</p>
+        </div>
+      </div>
+      <div class="q-step">
+        <div class="q-num">4</div>
         <div>
           <h5>AI generates a 2D site plan</h5>
           <p>Schematic overhead diagram with boundaries, dimensions, and features labelled. Customer approves it before any money is discussed.</p>
         </div>
       </div>
       <div class="q-step">
-        <div class="q-num">4</div>
+        <div class="q-num">5</div>
         <div>
           <h5>AI produces an accuracy score</h5>
           <p>Every quote shows a confidence rating. High confidence = fixed-price quote issued immediately. Low confidence = site visit recommended automatically.</p>
         </div>
       </div>
       <div class="q-step">
-        <div class="q-num">5</div>
+        <div class="q-num">6</div>
         <div>
           <h5>Fixed-price quote delivered</h5>
           <p>Measurements feed into your rate card. Branded quote sent by email and SMS for customer approval.</p>
@@ -702,23 +710,23 @@ footer strong { color: rgba(255,255,255,0.55); }
       <div class="accuracy-rows">
         <div class="acc-row">
           <span class="acc-label">Flat synthetic turf</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="99"></div></div>
+          <span class="acc-pct">~99%</span>
+        </div>
+        <div class="acc-row">
+          <span class="acc-label">Garden beds & planting</span>
           <div class="acc-bar"><div class="acc-fill" data-width="98"></div></div>
           <span class="acc-pct">~98%</span>
         </div>
         <div class="acc-row">
-          <span class="acc-label">Garden beds & planting</span>
-          <div class="acc-bar"><div class="acc-fill" data-width="96"></div></div>
-          <span class="acc-pct">~96%</span>
-        </div>
-        <div class="acc-row">
           <span class="acc-label">Retaining walls (flat)</span>
-          <div class="acc-bar"><div class="acc-fill" data-width="94"></div></div>
-          <span class="acc-pct">~94%</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="97"></div></div>
+          <span class="acc-pct">~97%</span>
         </div>
         <div class="acc-row">
           <span class="acc-label">Sloped / multi-level sites</span>
-          <div class="acc-bar"><div class="acc-fill" data-width="65"></div></div>
-          <span class="acc-pct">~65%</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="85"></div></div>
+          <span class="acc-pct">~85%</span>
         </div>
       </div>
     </div>
@@ -728,6 +736,7 @@ footer strong { color: rgba(255,255,255,0.55); }
     </div>
 
     <div class="feature-pills">
+      <span class="pill">Satellite + photos + A4 scale</span>
       <span class="pill">Accuracy score per quote</span>
       <span class="pill">Auto site visit flag</span>
       <span class="pill">Approved site plan stored in CRM</span>
