@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 :root {
   --green-dark: #1a3a2a;
   --green-mid: #2d6b47;
@@ -20,798 +19,420 @@
   --text: #1a1a1a;
   --text-muted: #666;
 }
-
 html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-  background: #fff;
-  overflow-x: hidden;
-}
-
-/* ─── NAV ─── */
+/* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 16px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0,0,0,0.06);
   transition: all 0.3s;
 }
-
 nav.scrolled { padding: 12px 48px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-
-.nav-logo { height: 36px; }
-
+.nav-logo { height: 34px; }
 .nav-links { display: flex; gap: 8px; }
-
 .nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: 20px;
-  transition: all 0.2s;
+  font-size: 13px; font-weight: 500; color: var(--text-muted);
+  text-decoration: none; padding: 6px 14px; border-radius: 20px; transition: all 0.2s;
 }
-
 .nav-links a:hover { color: var(--green-dark); background: var(--green-pale); }
-
-.nav-cta {
-  background: var(--green-dark) !important;
-  color: white !important;
-  padding: 8px 18px !important;
-}
-
+.nav-cta { background: var(--green-dark) !important; color: white !important; padding: 8px 18px !important; }
 .nav-cta:hover { background: var(--green-mid) !important; }
 
-/* ─── HERO ─── */
+/* HERO */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d2619 0%, #1a3a2a 45%, #2d6b47 80%, #3d8c5e 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px 80px 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Aurora */
-.aurora {
-  position: absolute;
-  inset: -50%;
-  background: 
-    radial-gradient(ellipse 80% 50% at 20% 60%, rgba(125,212,160,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(61,140,94,0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 90% 60% at 50% 80%, rgba(29,90,54,0.15) 0%, transparent 50%);
-  animation: aurora-drift 12s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes aurora-drift {
-  0%   { transform: translate(0,0) scale(1); opacity: 0.8; }
-  33%  { transform: translate(-2%,1%) scale(1.03); opacity: 1; }
-  66%  { transform: translate(1%,-1%) scale(0.98); opacity: 0.9; }
-  100% { transform: translate(2%,2%) scale(1.04); opacity: 1; }
-}
-
-/* Particles */
-#particle-canvas {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-.hero-content { position: relative; z-index: 2; max-width: 800px; }
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.8);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 7px 16px;
-  border-radius: 40px;
-  margin-bottom: 28px;
-  animation: fadeUp 0.8s ease both;
-}
-
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--green-light);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(1.4); }
-}
-
-.hero h1 {
-  font-size: clamp(42px, 6vw, 72px);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-  animation: fadeUp 0.8s 0.1s ease both;
-}
-
-.hero h1 em {
-  font-style: normal;
-  color: var(--green-light);
-}
-
-.hero-sub {
-  font-size: 18px;
-  color: rgba(255,255,255,0.6);
-  font-weight: 300;
-  line-height: 1.6;
-  max-width: 560px;
-  margin-bottom: 48px;
-  animation: fadeUp 0.8s 0.2s ease both;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 48px;
-  animation: fadeUp 0.8s 0.3s ease both;
-}
-
-.hero-stat {}
-.hero-stat .num {
-  font-size: 32px;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1;
-}
-.hero-stat .num span { color: var(--green-light); }
-.hero-stat .lbl {
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.hero-scroll {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.3);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  animation: fadeUp 1s 0.6s ease both;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3));
-  animation: scroll-bounce 2s ease-in-out infinite;
-}
-
-@keyframes scroll-bounce {
-  0%, 100% { transform: scaleY(1); opacity: 0.3; }
-  50%       { transform: scaleY(1.2); opacity: 0.7; }
-}
-
-/* ─── HORIZONTAL SCROLL SECTION ─── */
-.hscroll-wrapper {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.hscroll-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.hscroll-track {
-  display: flex;
-  gap: 0;
-  will-change: transform;
-  transition: transform 0s; /* driven by JS */
-}
-
-.hscroll-panel {
-  width: 100vw;
-  min-width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 80px;
-  flex-shrink: 0;
-}
-
-.panel-intro {
-  background: var(--off-white);
-  justify-content: center;
-}
-
-.panel-intro-inner {
-  max-width: 700px;
-  text-align: center;
-}
-
-/* ─── SECTIONS ─── */
-section {
-  padding: 100px 80px;
-}
-
-.section-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: var(--green-bright);
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 800;
-  color: var(--green-dark);
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-}
-
-.lead {
-  font-size: 17px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 600px;
-  margin-bottom: 56px;
-}
-
-/* ─── INSIGHTS SECTION ─── */
-.insights-section {
-  background: var(--green-dark);
-  color: white;
-}
-
-.insights-section h2 { color: white; }
-.insights-section .section-label { color: var(--green-light); }
-.insights-section .lead { color: rgba(255,255,255,0.55); }
-
-.insights-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.insight-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 28px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s, transform 0.6s;
-}
-
-.insight-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.insight-card:nth-child(2) { transition-delay: 0.1s; }
-.insight-card:nth-child(3) { transition-delay: 0.2s; }
-.insight-card:nth-child(4) { transition-delay: 0.3s; }
-.insight-card:nth-child(5) { transition-delay: 0.4s; }
-.insight-card:nth-child(6) { transition-delay: 0.5s; }
-
-.insight-icon {
-  font-size: 28px;
-  margin-bottom: 14px;
-}
-
-.insight-card h4 {
-  font-size: 15px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 8px;
-}
-
-.insight-card p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.6;
-}
-
-/* ─── PHASES SECTION ─── */
-.phases-section { background: #fff; }
-
-.phases-track {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 8px;
-}
-
-.phase-card {
-  border: 1.5px solid #e0ece6;
-  border-radius: 16px;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s, transform 0.7s, box-shadow 0.3s;
-  cursor: default;
-}
-
-.phase-card.visible { opacity: 1; transform: translateY(0); }
-.phase-card:nth-child(2) { transition-delay: 0.12s; }
-.phase-card:nth-child(3) { transition-delay: 0.24s; }
-.phase-card:nth-child(4) { transition-delay: 0.36s; }
-
-.phase-card:hover {
-  box-shadow: 0 12px 40px rgba(45,107,71,0.15);
-  border-color: var(--green-bright);
-  transform: translateY(-4px) !important;
-}
-
-.phase-top {
-  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.phase-top::after {
-  content: '';
-  position: absolute;
-  bottom: -20px; right: -20px;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-}
-
-.phase-num {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--green-light);
-  margin-bottom: 8px;
-}
-
-.phase-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
-}
-
-.phase-timeline {
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  margin-top: 6px;
-}
-
-.phase-body { padding: 24px; }
-
-.phase-price {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--green-dark);
-  margin-bottom: 4px;
-}
-
-.phase-recurring {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.phase-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.phase-features li {
-  font-size: 12.5px;
-  color: #444;
-  padding-left: 18px;
-  position: relative;
-  line-height: 1.4;
-}
-
-.phase-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--green-bright);
-  font-weight: 700;
-  font-size: 11px;
-}
-
-/* ─── AI QUOTING FEATURE SECTION ─── */
-.quoting-section {
-  background: linear-gradient(180deg, #f0f7f3 0%, #fff 100%);
-}
-
-.quoting-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.quoting-visual {
-  background: var(--green-dark);
-  border-radius: 20px;
-  padding: 40px;
   position: relative;
   overflow: hidden;
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.8s, transform 0.8s;
 }
 
-.quoting-visual.visible { opacity: 1; transform: translateX(0); }
-
-.quoting-visual::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(125,212,160,0.15), transparent);
-}
-
-.quoting-steps {
+.hero-left {
+  background: linear-gradient(155deg, #0d2619 0%, #1a3a2a 50%, #2d6b47 100%);
+  padding: 140px 64px 80px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  justify-content: center;
   position: relative;
+  overflow: hidden;
   z-index: 1;
 }
 
-.q-step {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateX(-16px);
-  transition: opacity 0.5s, transform 0.5s;
+.aurora {
+  position: absolute; inset: -50%;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 60%, rgba(125,212,160,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(61,140,94,0.25) 0%, transparent 55%);
+  animation: aurora-drift 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes aurora-drift {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(3%,2%) scale(1.05); }
+}
+canvas#particle-canvas { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; }
+
+.hero-content { position: relative; z-index: 2; }
+
+/* BIG LOGO in hero */
+.hero-logo {
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s ease both;
+}
+.hero-logo img {
+  height: 64px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
 }
 
-.q-step.visible { opacity: 1; transform: translateX(0); }
-.q-step:nth-child(2) { transition-delay: 0.1s; }
-.q-step:nth-child(3) { transition-delay: 0.2s; }
-.q-step:nth-child(4) { transition-delay: 0.3s; }
-.q-step:nth-child(5) { transition-delay: 0.4s; }
-
-.q-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: rgba(125,212,160,0.15);
-  border: 1px solid rgba(125,212,160,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75); font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 40px; margin-bottom: 24px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-badge::before {
+  content: ''; width: 5px; height: 5px; background: var(--green-light);
+  border-radius: 50%; animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(1.5); }
 }
 
-.q-step h5 {
-  font-size: 13px;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 3px;
+.hero h1 {
+  font-size: clamp(36px, 4vw, 58px); font-weight: 900; color: #fff;
+  line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 18px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+.hero h1 em { font-style: normal; color: var(--green-light); }
+
+.hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.55); font-weight: 300;
+  line-height: 1.65; max-width: 460px; margin-bottom: 40px;
+  animation: fadeUp 0.7s 0.2s ease both;
 }
 
-.q-step p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.5;
+.hero-stats { display: flex; gap: 36px; animation: fadeUp 0.7s 0.3s ease both; }
+.hero-stat .num { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
+.hero-stat .num span { color: var(--green-light); }
+.hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
+
+.hero-cta {
+  display: inline-block; margin-top: 40px;
+  background: var(--green-light); color: var(--green-dark);
+  font-size: 14px; font-weight: 700;
+  padding: 14px 32px; border-radius: 40px; text-decoration: none;
+  transition: all 0.2s; animation: fadeUp 0.7s 0.35s ease both;
 }
+.hero-cta:hover { background: white; transform: translateY(-2px); }
 
-.quoting-text { opacity: 0; transform: translateX(40px); transition: opacity 0.8s, transform 0.8s; }
-.quoting-text.visible { opacity: 1; transform: translateX(0); }
-
-.feature-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.pill {
-  background: var(--green-pale);
-  color: var(--green-dark);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 20px;
-}
-
-/* ─── PRICING SECTION ─── */
-.pricing-section {
-  background: var(--green-dark);
-}
-
-.pricing-section h2 { color: white; }
-.pricing-section .section-label { color: var(--green-light); }
-.pricing-section .lead { color: rgba(255,255,255,0.55); }
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 900px;
-}
-
-.pricing-card {
-  border: 1.5px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 32px;
+/* HERO RIGHT — photo collage */
+.hero-right {
   position: relative;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s, transform 0.6s, border-color 0.3s;
-}
-
-.pricing-card.visible { opacity: 1; transform: translateY(0); }
-.pricing-card:nth-child(2) { transition-delay: 0.12s; }
-.pricing-card:nth-child(3) { transition-delay: 0.24s; }
-
-.pricing-card.featured {
-  border-color: var(--green-light);
-  background: rgba(125,212,160,0.07);
-}
-
-.pricing-badge {
-  position: absolute;
-  top: -11px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--green-light);
-  color: var(--green-dark);
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 4px 14px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-
-.pricing-card h4 {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.pricing-amount {
-  font-size: 38px;
-  font-weight: 900;
-  color: white;
-  letter-spacing: -1px;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.pricing-sub {
-  font-size: 13px;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.pricing-card p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-}
-
-/* ─── CONTACT SECTION ─── */
-.contact-section {
-  background: var(--off-white);
-  text-align: center;
-  padding: 100px 80px;
-}
-
-.contact-inner {
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-.contact-section h2 { color: var(--green-dark); }
-
-.contact-details {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-}
-
-.contact-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.contact-item .lbl {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text-muted);
-}
-
-.contact-item .val {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--green-dark);
-}
-
-.cta-btn {
-  display: inline-block;
-  background: var(--green-dark);
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 14px 36px;
-  border-radius: 40px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-  margin-top: 8px;
-}
-
-.cta-btn:hover {
-  background: var(--green-mid);
-  transform: translateY(-2px);
-}
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--green-dark);
-  padding: 24px 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-footer p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.35);
-}
-
-footer strong { color: rgba(255,255,255,0.6); }
-
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── HORIZONTAL SCROLL PROGRESS ─── */
-.hscroll-progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;
-  background: var(--green-light);
-  z-index: 200;
-  transition: width 0.1s;
-}
-
-/* ─── PHASE TIMELINE BAR ─── */
-.timeline {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 56px;
   overflow: hidden;
 }
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, #1a3a2a 0%, transparent 30%);
+  z-index: 1;
+}
+.hero-photo-main {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-photo-overlay {
+  position: absolute;
+  bottom: 40px; right: 32px;
+  width: 200px; height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  z-index: 2;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.hero-photo-badge {
+  position: absolute; top: 40px; right: 32px; z-index: 2;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; font-size: 11px; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-photo-badge span { color: var(--green-light); font-size: 18px; font-weight: 800; display: block; }
 
-.timeline-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  position: relative;
-  opacity: 0;
-  transition: opacity 0.6s;
+/* SECTIONS */
+section { padding: 100px 80px; }
+.section-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--green-bright); margin-bottom: 10px;
+}
+h2 {
+  font-size: clamp(30px, 3.5vw, 44px); font-weight: 800;
+  color: var(--green-dark); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px;
+}
+.lead {
+  font-size: 16px; color: var(--text-muted); line-height: 1.7;
+  max-width: 580px; margin-bottom: 52px;
 }
 
+/* INSIGHTS */
+.insights-section { background: var(--green-dark); }
+.insights-section h2 { color: white; }
+.insights-section .section-label { color: var(--green-light); }
+.insights-section .lead { color: rgba(255,255,255,0.5); }
+
+.insights-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.insight-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 26px;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s, transform 0.6s, background 0.2s;
+}
+.insight-card:hover { background: rgba(255,255,255,0.08); }
+.insight-card.visible { opacity: 1; transform: translateY(0); }
+.insight-card:nth-child(2) { transition-delay: 0.08s; }
+.insight-card:nth-child(3) { transition-delay: 0.16s; }
+.insight-card:nth-child(4) { transition-delay: 0.24s; }
+.insight-card:nth-child(5) { transition-delay: 0.32s; }
+.insight-card:nth-child(6) { transition-delay: 0.4s; }
+.insight-icon { font-size: 26px; margin-bottom: 12px; }
+.insight-card h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 7px; }
+.insight-card p { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+/* PHOTO STRIP */
+.photo-strip {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  height: 380px;
+  gap: 3px;
+  overflow: hidden;
+}
+.photo-strip img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.photo-strip img:hover { transform: scale(1.04); }
+
+/* PHASES */
+.phases-section { background: #fff; }
+
+.timeline {
+  display: flex; align-items: flex-start; margin-bottom: 52px; overflow: hidden;
+}
+.timeline-step {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1; position: relative;
+  opacity: 0; transition: opacity 0.6s;
+}
 .timeline-step.visible { opacity: 1; }
 .timeline-step:nth-child(2) { transition-delay: 0.15s; }
 .timeline-step:nth-child(3) { transition-delay: 0.3s; }
 .timeline-step:nth-child(4) { transition-delay: 0.45s; }
-
 .timeline-step::before {
   content: '';
-  position: absolute;
-  top: 17px;
-  left: calc(50% + 18px);
-  right: calc(-50% + 18px);
+  position: absolute; top: 17px;
+  left: calc(50% + 18px); right: calc(-50% + 18px);
   height: 2px;
   background: linear-gradient(to right, var(--green-bright), var(--green-pale));
 }
-
 .timeline-step:last-child::before { display: none; }
-
 .timeline-dot {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--green-dark);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--green-dark); color: white;
+  font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px; position: relative; z-index: 1;
   box-shadow: 0 0 0 6px var(--green-pale);
 }
+.timeline-label { font-size: 11px; font-weight: 600; text-align: center; color: var(--green-dark); text-transform: uppercase; letter-spacing: 0.5px; }
+.timeline-price { font-size: 13px; font-weight: 700; color: var(--green-bright); margin-top: 2px; }
 
-.timeline-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-  color: var(--green-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.phases-track { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.phase-card {
+  border: 1.5px solid #e0ece6; border-radius: 14px; overflow: hidden;
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s, transform 0.7s, box-shadow 0.3s, border-color 0.3s;
+}
+.phase-card.visible { opacity: 1; transform: translateY(0); }
+.phase-card:nth-child(2) { transition-delay: 0.1s; }
+.phase-card:nth-child(3) { transition-delay: 0.2s; }
+.phase-card:nth-child(4) { transition-delay: 0.3s; }
+.phase-card:hover { box-shadow: 0 12px 40px rgba(45,107,71,0.15); border-color: var(--green-bright); transform: translateY(-4px) !important; }
+.phase-top {
+  background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+  padding: 22px; position: relative; overflow: hidden;
+}
+.phase-top::after {
+  content: ''; position: absolute; bottom: -20px; right: -20px;
+  width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.05);
+}
+.phase-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--green-light); margin-bottom: 6px; }
+.phase-title { font-size: 15px; font-weight: 700; color: white; line-height: 1.25; }
+.phase-timeline { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 5px; }
+.phase-body { padding: 22px; }
+.phase-price { font-size: 26px; font-weight: 800; color: var(--green-dark); margin-bottom: 3px; }
+.phase-recurring { font-size: 11px; color: var(--text-muted); margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #f0f0f0; }
+.phase-features { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.phase-features li { font-size: 12px; color: #444; padding-left: 16px; position: relative; line-height: 1.4; }
+.phase-features li::before { content: '✓'; position: absolute; left: 0; color: var(--green-bright); font-weight: 700; font-size: 10px; }
+
+/* AI QUOTING SECTION */
+.quoting-section {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
 }
 
-.timeline-price {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--green-bright);
-  margin-top: 2px;
+.quoting-photo {
+  position: relative;
+  overflow: hidden;
+}
+.quoting-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.quoting-photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 50%, white 100%);
 }
 
+.quoting-content {
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
+
+.q-flow { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+.q-step {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 0; border-bottom: 1px solid #f0f0f0;
+  opacity: 0; transform: translateX(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.q-step:last-child { border-bottom: none; }
+.q-step.visible { opacity: 1; transform: translateX(0); }
+.q-step:nth-child(2) { transition-delay: 0.08s; }
+.q-step:nth-child(3) { transition-delay: 0.16s; }
+.q-step:nth-child(4) { transition-delay: 0.24s; }
+.q-step:nth-child(5) { transition-delay: 0.32s; }
+.q-step:nth-child(6) { transition-delay: 0.40s; }
+
+.q-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--green-pale); color: var(--green-dark);
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.q-step h5 { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 3px; }
+.q-step p { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+/* ACCURACY BADGE */
+.accuracy-panel {
+  background: var(--green-pale);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 28px;
+  border-left: 4px solid var(--green-bright);
+}
+.accuracy-panel h5 { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 12px; }
+.accuracy-rows { display: flex; flex-direction: column; gap: 8px; }
+.acc-row { display: flex; align-items: center; gap: 12px; }
+.acc-label { font-size: 12px; color: var(--text-muted); width: 160px; flex-shrink: 0; }
+.acc-bar { flex: 1; height: 6px; background: rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; }
+.acc-fill { height: 100%; border-radius: 4px; background: var(--green-bright); transition: width 1.2s ease; width: 0; }
+.acc-fill.visible { }
+.acc-pct { font-size: 11px; font-weight: 700; color: var(--green-dark); width: 36px; text-align: right; flex-shrink: 0; }
+
+.site-visit-note {
+  background: #fff8e6;
+  border: 1px solid #f0d060;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #7a5e00;
+  line-height: 1.5;
+}
+.site-visit-note strong { color: #5a4400; }
+
+/* PRICING */
+.pricing-section { background: var(--green-dark); }
+.pricing-section h2 { color: white; }
+.pricing-section .section-label { color: var(--green-light); }
+.pricing-section .lead { color: rgba(255,255,255,0.5); }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 860px; }
+.pricing-card {
+  border: 1.5px solid rgba(255,255,255,0.1); border-radius: 16px;
+  padding: 30px; position: relative;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.pricing-card.visible { opacity: 1; transform: translateY(0); }
+.pricing-card:nth-child(2) { transition-delay: 0.1s; }
+.pricing-card:nth-child(3) { transition-delay: 0.2s; }
+.pricing-card.featured { border-color: var(--green-light); background: rgba(125,212,160,0.06); }
+.pricing-badge {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--green-light); color: var(--green-dark);
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+}
+.pricing-card h4 { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.pricing-amount { font-size: 36px; font-weight: 900; color: white; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.pricing-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.pricing-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* CONTACT */
+.contact-section { background: var(--off-white); text-align: center; }
+.contact-inner { max-width: 520px; margin: 0 auto; }
+.contact-details { display: flex; justify-content: center; gap: 40px; margin: 36px 0; }
+.contact-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.contact-item .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+.contact-item .val { font-size: 15px; font-weight: 600; color: var(--green-dark); }
+.cta-btn {
+  display: inline-block; background: var(--green-dark); color: white;
+  font-size: 14px; font-weight: 700; padding: 14px 36px;
+  border-radius: 40px; text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.cta-btn:hover { background: var(--green-mid); transform: translateY(-2px); }
+
+/* FOOTER */
+footer {
+  background: var(--green-dark); padding: 22px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer img { height: 28px; filter: brightness(0) invert(1); opacity: 0.5; }
+footer p { font-size: 11px; color: rgba(255,255,255,0.3); }
+footer strong { color: rgba(255,255,255,0.55); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.hscroll-progress { position:fixed; top:0; left:0; height:3px; background:var(--green-light); z-index:200; transition:width 0.1s; }
+
+/* FEATURE PILLS */
+.feature-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.pill { background:var(--green-pale); color:var(--green-dark); font-size:11px; font-weight:600; padding:5px 13px; border-radius:20px; }
 </style>
 </head>
 <body>
@@ -832,32 +453,40 @@ footer strong { color: rgba(255,255,255,0.6); }
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="aurora"></div>
-  <canvas id="particle-canvas"></canvas>
-
-  <div class="hero-content">
-    <div class="hero-badge">Prepared exclusively for Lush Landscaping</div>
-    <h1>A smarter way<br>to run <em>Lush</em><br>Landscaping.</h1>
-    <p class="hero-sub">Custom software platform — website, CRM, AI quoting, and intelligent customer service — built around how you actually operate.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="num">4<span> phases</span></div>
-        <div class="lbl">Start seeing value in week 2</div>
+  <div class="hero-left">
+    <div class="aurora"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/08/logo-lush.png" alt="Lush Landscaping">
       </div>
-      <div class="hero-stat">
-        <div class="num">$13k</div>
-        <div class="lbl">Complete platform</div>
+      <div class="hero-badge">Custom Software Proposal · June 2026</div>
+      <h1>A smarter way<br>to run <em>Lush</em><br>Landscaping.</h1>
+      <p class="hero-sub">Custom platform built around how you actually operate — fixed pricing, CRM, AI-powered quoting, and 24/7 customer service.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">4<span> phases</span></div>
+          <div class="lbl">Start in week 2</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">$13k</div>
+          <div class="lbl">Full platform</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">$350<span>/mo</span></div>
+          <div class="lbl">All-in ongoing</div>
+        </div>
       </div>
-      <div class="hero-stat">
-        <div class="num">$350<span>/mo</span></div>
-        <div class="lbl">All-in ongoing</div>
-      </div>
+      <a href="#phases" class="hero-cta">Explore the plan →</a>
     </div>
   </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll to explore
+  <div class="hero-right">
+    <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/08/form-bg1.jpg" alt="Lush Landscaping project" class="hero-photo-main">
+    <div class="hero-photo-badge">
+      <span>2,000+</span>
+      Projects completed
+    </div>
+    <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/10/Untitled-12.jpg" alt="Landscaping work" class="hero-photo-overlay">
   </div>
 </section>
 
@@ -865,41 +494,47 @@ footer strong { color: rgba(255,255,255,0.6); }
 <section class="insights-section" id="insights">
   <div class="section-label">What we know about you</div>
   <h2>Built for the way<br>you already work.</h2>
-  <p class="lead">Your brand is built on fixed pricing, single point of contact, and a 7-year warranty. We designed this platform around that.</p>
-
+  <p class="lead">Your brand is built on fixed pricing, single point of contact, and a 7-year warranty. Every feature here was designed around that.</p>
   <div class="insights-grid">
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">💰</div>
       <h4>Fixed pricing is your promise</h4>
-      <p>Customers choose you because there are no surprises. Your quoting system needs to reflect that — accurate, fast, and professional every time.</p>
+      <p>Customers choose you because there are no surprises. Your quoting system reinforces that — accurate, fast, and professional every time.</p>
     </div>
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">🛡️</div>
       <h4>7-year warranty means long-term</h4>
-      <p>Relationships don't end at completion. You need warranty expiry tracking built into your CRM — know exactly which jobs are still under cover.</p>
+      <p>Relationships don't end at completion. The CRM tracks warranty expiry per job so you always know what's still under cover.</p>
     </div>
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">🏗️</div>
       <h4>Developer accounts matter</h4>
-      <p>Builder partnerships like Metricon require B2B account management — batches of lots, volume pricing, dedicated contacts per project.</p>
+      <p>Builder partnerships like Metricon need B2B account management — batches of lots, volume pricing, dedicated contacts per project.</p>
     </div>
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">👤</div>
       <h4>One point of contact is your edge</h4>
-      <p>Every job needs an assigned project manager with full visibility. Customers should always know who to call — and staff should see everything.</p>
+      <p>Every job needs an assigned PM with full visibility. Customers always know who to call — staff always see everything.</p>
     </div>
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">📊</div>
       <h4>2,000+ projects is serious data</h4>
-      <p>You've built a track record. A proper CRM captures and leverages that history — instead of letting it sit in spreadsheets or an outdated system.</p>
+      <p>You've built a track record. A proper CRM captures that history and makes it useful — instead of sitting in a system you'll outgrow.</p>
     </div>
-    <div class="insight-card reveal">
+    <div class="insight-card">
       <div class="insight-icon">🤖</div>
       <h4>Automation frees your team</h4>
-      <p>An AI customer service agent handles inbound inquiries 24/7, logs them to the CRM, and only escalates when a human is genuinely needed.</p>
+      <p>An AI agent handles inbound inquiries 24/7, logs them to the CRM, and only escalates when a human is genuinely needed.</p>
     </div>
   </div>
 </section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/08/holistic.jpg" alt="Lush Landscaping project">
+  <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/10/Untitled-1.jpg" alt="Landscaping work">
+  <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/11/New-Home.jpg" alt="New home landscaping">
+</div>
 
 <!-- PHASES SECTION -->
 <section class="phases-section" id="phases">
@@ -931,8 +566,7 @@ footer strong { color: rgba(255,255,255,0.6); }
   </div>
 
   <div class="phases-track">
-
-    <div class="phase-card reveal">
+    <div class="phase-card">
       <div class="phase-top">
         <div class="phase-num">Phase 01</div>
         <div class="phase-title">New Website + Lead Capture</div>
@@ -943,8 +577,8 @@ footer strong { color: rgba(255,255,255,0.6); }
         <div class="phase-recurring">then $50/mo all-in</div>
         <ul class="phase-features">
           <li>Full website rebuild, all service pages</li>
-          <li>Retaining walls, pergolas, turf, new homes, commercial</li>
-          <li>VBA licence + accreditations + warranty messaging</li>
+          <li>Retaining walls, pergolas, turf, commercial</li>
+          <li>VBA licence + accreditations + warranty</li>
           <li>Areas We Serve (Melbourne suburbs)</li>
           <li>Portfolio/gallery section</li>
           <li>Mobile-first, fast, SEO-optimised</li>
@@ -953,8 +587,7 @@ footer strong { color: rgba(255,255,255,0.6); }
         </ul>
       </div>
     </div>
-
-    <div class="phase-card reveal">
+    <div class="phase-card">
       <div class="phase-top">
         <div class="phase-num">Phase 02</div>
         <div class="phase-title">CRM + Admin Backend</div>
@@ -966,17 +599,16 @@ footer strong { color: rgba(255,255,255,0.6); }
         <ul class="phase-features">
           <li>Full CRM replacing your current system</li>
           <li>Lead pipeline: New → Quoted → Complete</li>
-          <li>Job records: PM, suburb, value, service type</li>
           <li>7-year warranty expiry tracker per job</li>
           <li>Developer/builder account management</li>
           <li>Staff roles: admin vs staff</li>
+          <li>PM assignment per job</li>
           <li>Revenue pipeline dashboard</li>
           <li>Mobile-friendly for on-site use</li>
         </ul>
       </div>
     </div>
-
-    <div class="phase-card reveal">
+    <div class="phase-card">
       <div class="phase-top">
         <div class="phase-num">Phase 03</div>
         <div class="phase-title">AI Quoting System</div>
@@ -986,19 +618,18 @@ footer strong { color: rgba(255,255,255,0.6); }
         <div class="phase-price">$4,500</div>
         <div class="phase-recurring">then $220/mo all-in</div>
         <ul class="phase-features">
-          <li>Upload plans (PDF) → AI reads scope → draft quote</li>
-          <li>Upload site photos → A4 paper scale reference</li>
-          <li>AI generates 2D site plan for customer approval</li>
-          <li>Fixed-price quote from approved plan</li>
-          <li>Staff quote builder with margin controls</li>
-          <li>Branded PDF quote generation</li>
+          <li>Upload plans (PDF) → AI draft quote</li>
+          <li>Photo upload + A4 scale reference</li>
+          <li>AI accuracy score per quote</li>
+          <li>Auto-recommends site visit if needed</li>
+          <li>2D site plan generated + approved</li>
+          <li>Staff quote builder + margin controls</li>
           <li>Customer approval via email + SMS</li>
           <li>Job auto-created in CRM on approval</li>
         </ul>
       </div>
     </div>
-
-    <div class="phase-card reveal">
+    <div class="phase-card">
       <div class="phase-top">
         <div class="phase-num">Phase 04</div>
         <div class="phase-title">AI Customer Service</div>
@@ -1009,86 +640,112 @@ footer strong { color: rgba(255,255,255,0.6); }
         <div class="phase-recurring">then $350/mo all-in</div>
         <ul class="phase-features">
           <li>Dedicated SMS number + email inbox</li>
-          <li>AI handles inbound 24/7</li>
+          <li>Handles inbound 24/7, under 60 seconds</li>
           <li>Quote status, FAQs, callback requests</li>
           <li>Escalates to human when needed</li>
           <li>All conversations logged to CRM</li>
-          <li>Responds in under 60 seconds</li>
           <li>Matches your brand voice</li>
-          <li>Weekly conversation summary</li>
+          <li>Sends customers the quote form link</li>
+          <li>Weekly conversation summary report</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- AI QUOTING FEATURE SECTION -->
-<section class="quoting-section" id="quoting">
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+<!-- AI QUOTING SECTION -->
+<section id="quoting" class="quoting-section">
+  <div class="quoting-photo">
+    <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/08/Untitled-13.jpg" alt="Landscaping backyard">
+    <div class="quoting-photo-overlay"></div>
+  </div>
+  <div class="quoting-content">
+    <div class="section-label">The flagship feature</div>
+    <h2>Photo to<br>fixed-price quote.<br>No site visit.</h2>
+    <p class="lead" style="margin-bottom: 0;">A homeowner takes a few photos, places an A4 sheet on the ground, and receives a real fixed-price quote in their inbox — without anyone leaving the office.</p>
 
-    <div class="quoting-visual reveal">
-      <div class="quoting-steps">
-        <div class="q-step reveal">
-          <div class="q-icon">📸</div>
-          <div>
-            <h5>Customer takes 3–4 photos</h5>
-            <p>Overhead + ground-level angles of the space. No special equipment needed.</p>
-          </div>
+    <div class="q-flow">
+      <div class="q-step">
+        <div class="q-num">1</div>
+        <div>
+          <h5>Customer takes 3–4 photos</h5>
+          <p>Overhead + ground-level angles. Place a blank A4 sheet flat on the ground in at least one shot.</p>
         </div>
-        <div class="q-step reveal">
-          <div class="q-icon">📄</div>
-          <div>
-            <h5>A4 paper flat on the ground</h5>
-            <p>210×297mm known reference. AI uses it to calculate real-world dimensions from the photo.</p>
-          </div>
+      </div>
+      <div class="q-step">
+        <div class="q-num">2</div>
+        <div>
+          <h5>A4 paper establishes scale</h5>
+          <p>AI detects the 210×297mm reference, calculates real-world dimensions from every angle.</p>
         </div>
-        <div class="q-step reveal">
-          <div class="q-icon">🗺️</div>
-          <div>
-            <h5>AI generates a 2D site plan</h5>
-            <p>Schematic overhead diagram with boundaries, features, and dimensions labelled.</p>
-          </div>
+      </div>
+      <div class="q-step">
+        <div class="q-num">3</div>
+        <div>
+          <h5>AI generates a 2D site plan</h5>
+          <p>Schematic overhead diagram with boundaries, dimensions, and features labelled. Customer approves it before any money is discussed.</p>
         </div>
-        <div class="q-step reveal">
-          <div class="q-icon">✅</div>
-          <div>
-            <h5>Customer approves the plan</h5>
-            <p>They confirm the AI understood the space correctly before any money is discussed.</p>
-          </div>
+      </div>
+      <div class="q-step">
+        <div class="q-num">4</div>
+        <div>
+          <h5>AI produces an accuracy score</h5>
+          <p>Every quote shows a confidence rating. High confidence = fixed-price quote issued immediately. Low confidence = site visit recommended automatically.</p>
         </div>
-        <div class="q-step reveal">
-          <div class="q-icon">💬</div>
-          <div>
-            <h5>Fixed-price quote delivered</h5>
-            <p>Measurements feed into your rate card. Branded quote sent by email and SMS.</p>
-          </div>
+      </div>
+      <div class="q-step">
+        <div class="q-num">5</div>
+        <div>
+          <h5>Fixed-price quote delivered</h5>
+          <p>Measurements feed into your rate card. Branded quote sent by email and SMS for customer approval.</p>
         </div>
       </div>
     </div>
 
-    <div class="quoting-text reveal">
-      <div class="section-label">The flagship feature</div>
-      <h2>Photo to<br>fixed-price quote.<br>No site visit.</h2>
-      <p class="lead" style="margin-bottom:24px;">No other landscaping quoting tool does this. A homeowner takes a few photos of their backyard and receives a real, accurate, fixed-price quote in their inbox — without anyone leaving the office.</p>
-      <p style="font-size:14px; color: var(--text-muted); line-height:1.7; margin-bottom: 24px;">The A4 paper acts as a known reference object (210×297mm) in the photo. AI detects it, establishes scale, measures the area, and generates a schematic site plan the customer approves before the quote is issued. The approved plan is stored in the CRM — protecting Lush from scope disputes.</p>
-      <div class="feature-pills">
-        <span class="pill">Within 5–10% accuracy</span>
-        <span class="pill">No site visit needed</span>
-        <span class="pill">Scope disputes solved</span>
-        <span class="pill">24/7 quote requests</span>
+    <div class="accuracy-panel">
+      <h5>AI Accuracy by Job Type</h5>
+      <div class="accuracy-rows">
+        <div class="acc-row">
+          <span class="acc-label">Flat synthetic turf</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="93"></div></div>
+          <span class="acc-pct">~93%</span>
+        </div>
+        <div class="acc-row">
+          <span class="acc-label">Garden beds & planting</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="89"></div></div>
+          <span class="acc-pct">~89%</span>
+        </div>
+        <div class="acc-row">
+          <span class="acc-label">Retaining walls (flat)</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="85"></div></div>
+          <span class="acc-pct">~85%</span>
+        </div>
+        <div class="acc-row">
+          <span class="acc-label">Sloped / multi-level sites</span>
+          <div class="acc-bar"><div class="acc-fill" data-width="55"></div></div>
+          <span class="acc-pct">~55%</span>
+        </div>
       </div>
     </div>
 
+    <div class="site-visit-note">
+      <strong>🏠 Site visit auto-recommended when:</strong> AI confidence is below 75%, the site appears heavily sloped, obstructions block key measurements, or the job value exceeds a threshold you set. Protects your fixed-price promise on every job.
+    </div>
+
+    <div class="feature-pills">
+      <span class="pill">Accuracy score per quote</span>
+      <span class="pill">Auto site visit flag</span>
+      <span class="pill">Approved site plan stored in CRM</span>
+      <span class="pill">No site visit for standard jobs</span>
+    </div>
   </div>
 </section>
 
-<!-- PRICING SECTION -->
+<!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="section-label">Investment</div>
   <h2>Three ways to engage.</h2>
-  <p class="lead">All prices AUD. The monthly fee covers all hosting, AI usage, maintenance, and support. One invoice, nothing hidden.</p>
-
+  <p class="lead">All prices AUD. Monthly fee covers all hosting, AI usage, maintenance, and support. One invoice, nothing hidden.</p>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
       <h4>Full Build</h4>
@@ -1101,13 +758,13 @@ footer strong { color: rgba(255,255,255,0.6); }
       <h4>Phased Start</h4>
       <div class="pricing-amount">$6,500</div>
       <div class="pricing-sub">Phase 1+2 · then add phases when ready</div>
-      <p>Start with the website and CRM at $120/mo. See the value, then add quoting and AI agent when you're ready.</p>
+      <p>Start with website and CRM at $120/mo. See the value, then add quoting and AI agent when you're ready. Lower risk, easier yes.</p>
     </div>
     <div class="pricing-card reveal">
       <h4>Monthly Plan</h4>
-      <div class="pricing-amount">$650<span style="font-size:18px;font-weight:500">/mo</span></div>
+      <div class="pricing-amount">$650<span style="font-size:16px;font-weight:500">/mo</span></div>
       <div class="pricing-sub">24-month minimum · no upfront cost</div>
-      <p>No upfront build cost. Full platform rolled out in phases, covered by a single predictable monthly fee.</p>
+      <p>No upfront cost. Full platform rolled out in phases, covered by a single predictable monthly fee.</p>
     </div>
   </div>
 </section>
@@ -1116,15 +773,15 @@ footer strong { color: rgba(255,255,255,0.6); }
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <div class="section-label reveal">Ready to get started?</div>
-    <h2 class="reveal">Let's build<br>something great.</h2>
-    <p class="lead reveal" style="margin: 0 auto 0; text-align:center;">Jump on a call and we'll walk you through the proposal and answer any questions.</p>
+    <h2 class="reveal" style="color:var(--green-dark)">Let's build<br>something great.</h2>
+    <p class="lead reveal" style="margin: 0 auto; text-align:center;">Jump on a call and we'll walk you through the proposal and answer any questions.</p>
     <div class="contact-details reveal">
       <div class="contact-item">
         <span class="lbl">Phone</span>
         <span class="val">+61 433 121 933</span>
       </div>
       <div class="contact-item">
-        <span class="lbl">Name</span>
+        <span class="lbl">Contact</span>
         <span class="val">Mike Kerr</span>
       </div>
       <div class="contact-item">
@@ -1137,86 +794,66 @@ footer strong { color: rgba(255,255,255,0.6); }
 </section>
 
 <footer>
-  <p>Prepared by <strong>Mike Kerr</strong> · Founder, ManyHandz · +61 433 121 933</p>
-  <p>Confidential — prepared exclusively for <strong>Lush Landscaping</strong></p>
+  <img src="https://lushlandscaping.com.au/wp-content/uploads/2024/08/logo-lush.png" alt="Lush Landscaping">
+  <p>Prepared by <strong>Mike Kerr</strong> · Founder, ManyHandz · +61 433 121 933 · Confidential</p>
 </footer>
 
 <script>
-// ─── NAV SCROLL ───
+// NAV
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
-// ─── PARTICLES ───
+// PARTICLES (hero canvas)
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
-let particles = [];
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
 resize();
 window.addEventListener('resize', resize);
-
-function spawnParticle() {
-  return {
-    x: Math.random() * canvas.width,
-    y: canvas.height + 10,
-    size: Math.random() * 2 + 0.5,
-    speed: Math.random() * 0.6 + 0.2,
-    opacity: Math.random() * 0.5 + 0.1,
-    drift: (Math.random() - 0.5) * 0.3
-  };
-}
-
-for (let i = 0; i < 60; i++) {
-  particles.push({ ...spawnParticle(), y: Math.random() * canvas.height });
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p, i) => {
-    p.y -= p.speed;
-    p.x += p.drift;
-    if (p.y < -10) particles[i] = spawnParticle();
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(125, 212, 160, ${p.opacity})`;
-    ctx.fill();
+let particles = [];
+const spawn = () => ({ x: Math.random()*canvas.width, y: canvas.height+10, size: Math.random()*1.8+0.4, speed: Math.random()*0.5+0.2, opacity: Math.random()*0.45+0.1, drift: (Math.random()-0.5)*0.3 });
+for (let i=0;i<50;i++) particles.push({...spawn(), y: Math.random()*canvas.height});
+(function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i) => {
+    p.y -= p.speed; p.x += p.drift;
+    if (p.y < -10) particles[i] = spawn();
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fillStyle = `rgba(125,212,160,${p.opacity})`; ctx.fill();
   });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
+  requestAnimationFrame(animate);
+})();
 
-// ─── SCROLL REVEAL ───
-const observer = new IntersectionObserver((entries) => {
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .insight-card, .phase-card, .pricing-card, .q-step, .timeline-step').forEach(el => observer.observe(el));
+
+// ACCURACY BARS — animate when panel scrolls into view
+const accObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.classList.add('visible');
+      e.target.querySelectorAll('.acc-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.3 });
+document.querySelectorAll('.accuracy-panel').forEach(el => accObserver.observe(el));
 
-document.querySelectorAll('.reveal, .insight-card, .phase-card, .pricing-card, .q-step, .timeline-step, .quoting-visual, .quoting-text').forEach(el => {
-  observer.observe(el);
-});
-
-// ─── SCROLL PROGRESS ───
+// PROGRESS BAR
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => {
-  const total = document.body.scrollHeight - window.innerHeight;
-  const pct = (window.scrollY / total) * 100;
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
   progress.style.width = pct + '%';
 });
 
-// ─── SMOOTH SCROLL ───
+// SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior:'smooth', block:'start' });
   });
 });
 </script>
